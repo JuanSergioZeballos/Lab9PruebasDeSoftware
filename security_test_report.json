@@ -1,0 +1,106 @@
+[
+  {
+    "caso": "Caso 1.1",
+    "descripcion": "GET /hotels/999999 (id inexistente)",
+    "esperado": "404",
+    "obtenido": "404",
+    "resultado": "PASS",
+    "detalle": ""
+  },
+  {
+    "caso": "Caso 1.2",
+    "descripcion": "GET /reservas/999999 (id inexistente)",
+    "esperado": "404",
+    "obtenido": "404",
+    "resultado": "PASS",
+    "detalle": ""
+  },
+  {
+    "caso": "Caso 1.3",
+    "descripcion": "GET disponibilidad de hotel inexistente",
+    "esperado": "404",
+    "obtenido": "404",
+    "resultado": "PASS",
+    "detalle": ""
+  },
+  {
+    "caso": "Caso 2.1",
+    "descripcion": "POST /hotels sin campos obligatorios (direccion, ciudad, etc.)",
+    "esperado": "400 + mensaje de error",
+    "obtenido": "400 (mensaje=True)",
+    "resultado": "PASS",
+    "detalle": ""
+  },
+  {
+    "caso": "Caso 2.2",
+    "descripcion": "POST /hotels con campos obligatorios vacios ('')",
+    "esperado": "400 + mensaje de error",
+    "obtenido": "201",
+    "resultado": "FAIL",
+    "detalle": "La API valida solo la AUSENCIA del campo, no strings vacios"
+  },
+  {
+    "caso": "Caso 2.3",
+    "descripcion": "POST /reservas con body vacio",
+    "esperado": "400 + mensaje de error",
+    "obtenido": "400",
+    "resultado": "PASS",
+    "detalle": ""
+  },
+  {
+    "caso": "Caso 3.1",
+    "descripcion": "POST /hotels con tipos incorrectos (nombre:int, estrellas:str, habitaciones_totales:str)",
+    "esperado": "400/422 (rechazado)",
+    "obtenido": "500",
+    "resultado": "FAIL",
+    "detalle": "SQLite acepta el INSERT sin verificar tipo, o el error de tipo se traduce en un 500 no controlado"
+  },
+  {
+    "caso": "Caso 3.2",
+    "descripcion": "POST /hotels con estrellas=99 (fuera de rango 1-5)",
+    "esperado": "400/422/500 (rechazado)",
+    "obtenido": "SIN RESPUESTA (ReadTimeout)",
+    "resultado": "FAIL",
+    "detalle": "El servidor no responde tras el caso anterior (conexion/lock de SQLite sin liberar)"
+  },
+  {
+    "caso": "Caso 3.3",
+    "descripcion": "POST /reservas con habitaciones=-5 y email invalido",
+    "esperado": "400/422 (rechazado)",
+    "obtenido": "N/A (no se pudo crear hotel base)",
+    "resultado": "FAIL",
+    "detalle": ""
+  },
+  {
+    "caso": "Caso 4.1",
+    "descripcion": "PATCH /hotels (no soportado, solo GET/POST)",
+    "esperado": "405",
+    "obtenido": "405",
+    "resultado": "PASS",
+    "detalle": ""
+  },
+  {
+    "caso": "Caso 4.2",
+    "descripcion": "PATCH /reservas (no soportado, solo GET/POST)",
+    "esperado": "405",
+    "obtenido": "405",
+    "resultado": "PASS",
+    "detalle": ""
+  },
+  {
+    "caso": "Caso 4.3",
+    "descripcion": "DELETE /hotels (no soportado a nivel de coleccion)",
+    "esperado": "405",
+    "obtenido": "405",
+    "resultado": "PASS",
+    "detalle": ""
+  },
+  {
+    "caso": "Caso 5.1",
+    "descripcion": "Preparacion (crear hotel base)",
+    "esperado": "201",
+    "obtenido": "SIN RESPUESTA (ReadTimeout)",
+    "resultado": "FAIL",
+    "detalle": "El servidor sigue sin responder por el bloqueo de conexion detectado en el Caso 3"
+  }
+]
