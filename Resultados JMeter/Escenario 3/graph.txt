@@ -1,0 +1,7 @@
+5 ms
+no of samples: 6000
+desviation: 2
+latest sample: 4
+throughput: 12,011.611/minute
+avegare: 4
+median: 4

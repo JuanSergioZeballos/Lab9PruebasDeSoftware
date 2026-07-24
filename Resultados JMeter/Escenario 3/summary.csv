@@ -1,0 +1,6 @@
+Label,# Samples,Average,Min,Max,Std. Dev.,Error %,Throughput,Received KB/sec,Sent KB/sec,Avg. Bytes
+GET - Listar Hoteles,1500,4,2,42,2.63,0.000%,50.06843,19.80,6.01,405.0
+GET - Obtener Hotel ID 1,1500,4,2,45,2.22,0.000%,50.06843,18.63,6.11,381.0
+GET - Listar Reservas,1500,4,2,54,2.42,0.000%,50.07010,24.79,6.11,507.0
+GET - Consultar Disponibilidad,1500,4,2,60,3.13,0.000%,50.07511,14.77,8.85,302.0
+TOTAL,6000,4,2,60,2.63,0.000%,200.19352,77.96,27.08,398.8
